@@ -1,6 +1,20 @@
-# MarvelAngular
+# MarvelAngular [![](https://i.ibb.co/D9YfjVd/Marvel-Book-icon-1.png)](https://i.ibb.co/D9YfjVd/Marvel-Book-icon-1.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.2.
+
+## Project  Description
+>This is an personal project to prove Marvel Api, that I have developed with Angular.
+
+In this website you can do:
+
+- Browse the website for the different pages to look characters, comics, series, and comics creators.
+- In each page you can click the image and browse to detail page.
+- In detail page you find a main image depending of the section that you had chose, so there you can see more information about the characters, comics, creators and series. For example the creator role in one comic or a serie.
+- In series page or in the image of any detail page you can click the main picture and browse to the official Marvel Page and see more details.
+- Also in the main pages there is a search engine and there you can look for by name the comic, character, serie or creator that you want.
+
+## Extra Dependencies
+To create this web site I had used some dependecies like [Angular Material](https://material.angular.io/ "Angular Material") and [Angular/Flex-Layout](https://github.com/angular/flex-layout "Angular/Flex-Layout"), these dependencies help me to creat al the UI.
 
 ## Development server
 
