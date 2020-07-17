@@ -36,7 +36,7 @@
     <h2 fxFlex="row wrap">
         <mat-card-title>Comic Creators:</mat-card-title>
     </h2>
-    <ng-container *ngIf="getComicCharacters.length > 0; else elseBlock">
+    <ng-container *ngIf="getComicCreators.length > 0; else elseBlock">
         <div fxLayout="row wrap">
             <div *ngFor="let comicCreator of getComicCreators">
                 <mat-card style="margin: 8px;" matRipple [matRippleCentered]="true" [matRippleColor]="'rgba(255, 28, 28, 0.253)'" [matRippleRadius]="250" [matRippleAnimation]="{enterDuration: 1000, exitDuration: 800}">

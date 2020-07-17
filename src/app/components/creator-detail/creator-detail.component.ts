@@ -9,8 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 export class CreatorDetailComponent implements OnInit {
   Id = ""
   getOnlyOne:any
-  getCreatorComic = []
-  getCreatorSeries = []
+  getCreatorComic: Array<any> = []
+  getCreatorSeries: Array<any> = []
 
   constructor(
     private creatorDetail: CreatorDetailService,

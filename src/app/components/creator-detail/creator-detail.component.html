@@ -22,8 +22,8 @@
     <h2 fxFlex="row wrap">
         <mat-card-title><u>Comics in which he has participated:</u></mat-card-title>
     </h2>
-    <div fxLayout="row wrap">
-        <ng-component *ngIf="getCreatorComic.length> 0; else notFound">
+    <ng-container *ngIf="getCreatorComic.length > 0 ; else elseBlock">
+        <div fxLayout="row wrap">
             <div *ngFor="let creatorComic of getCreatorComic" 
             gdAuto="row dense" gdAlignColumns="stretch" 
             fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column" style="padding: 5px;">
@@ -48,19 +48,17 @@
                     <mat-card-subtitle>Price: <b>{{creatorComic.prices[0].price}}$</b></mat-card-subtitle>
                 </mat-card>
             </div>
-        </ng-component>
-        <ng-template #notFound>
-           <h2><i>Not Found Sorry</i></h2>
-        </ng-template>
-    </div>
+        </div>
+    </ng-container>
+    <ng-template #elseBlock><h2><i>Not Found Sorry</i></h2></ng-template>
     
         <br>
         <mat-divider></mat-divider>
         <h1 fxFlex="row wrap">
             <mat-card-title><u>Series in which he has participated:</u></mat-card-title>
         </h1>
+        <ng-container *ngIf="getCreatorSeries.length> 0; else notFound">
         <div fxLayout="row wrap">
-            <ng-component *ngIf="getCreatorComic.length> 0; else notFound">
                 <div *ngFor="let creatorSeries of getCreatorSeries" 
                 gdAuto="row dense" gdAlignColumns="stretch" 
                 fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column" style="padding: 5px">
@@ -94,11 +92,9 @@
     
                     </mat-card>   
                 </div>
-            </ng-component>
-            <ng-template #notFound>
-                <h2><i>Not Found Sorry</i></h2>
-             </ng-template>
-        </div>
+            </div>
+        </ng-container>
+    <ng-template #notFound><h2><i>Not Found Sorry</i></h2></ng-template>
 
 </div>
 
