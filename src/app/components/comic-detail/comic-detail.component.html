@@ -1,0 +1,55 @@
+<div fxFlex fxLayout="column" style="margin: 15px;">
+
+    <div fxLayout="row wrap">
+        <div fxFlex="100" fxLayout="column" style="padding: 5px">
+            <mat-card matRipple [matRippleCentered]="true" [matRippleRadius]="1150" [matRippleAnimation]="{enterDuration: 800, exitDuration: 500}">
+                <img class="detailImg" src="{{getOnlyOne.thumbnail.path}}.{{getOnlyOne.thumbnail.extension}}" alt="{{getOnlyOne.name}}">
+                <h1>{{getOnlyOne.title}}</h1>
+                <p>{{getOnlyOne.description}}</p>
+                <h3>Price: {{getOnlyOne.prices[0].price}}$</h3>
+            </mat-card>
+        </div>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <h2 fxFlex="row wrap">
+        <mat-card-title>Comic Characters:</mat-card-title>
+    </h2>
+    <ng-container *ngIf="getComicCharacters.length > 0; else elseBlock">
+        <div fxLayout="row wrap">
+            <div *ngFor="let comicChars of getComicCharacters">
+                <mat-card style="margin: 8px;"
+                matRipple [matRippleCentered]="true" [matRippleColor]="'rgba(255, 28, 28, 0.153)'" 
+                [matRippleRadius]="350" [matRippleAnimation]="{enterDuration: 800, exitDuration: 500}">
+                    <a routerLink="/character/{{comicChars.id}}">
+                        <img mat-card-xl-image src="{{comicChars.thumbnail.path}}.{{comicChars.thumbnail.extension}}" alt="{{comicChars.name}}"/>
+                        <h3 style="font-size: larger;"><b>{{comicChars.name}}</b></h3>
+                    </a>
+                </mat-card>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #elseBlock><h2>Not Found Sorry</h2></ng-template>
+    
+    <br>
+    <mat-divider></mat-divider>
+    <h2 fxFlex="row wrap">
+        <mat-card-title>Comic Creators:</mat-card-title>
+    </h2>
+    <ng-container *ngIf="getComicCharacters.length > 0; else elseBlock">
+        <div fxLayout="row wrap">
+            <div *ngFor="let comicCreator of getComicCreators">
+                <mat-card style="margin: 8px;" matRipple [matRippleCentered]="true" [matRippleColor]="'rgba(255, 28, 28, 0.253)'" [matRippleRadius]="250" [matRippleAnimation]="{enterDuration: 1000, exitDuration: 800}">
+                    <a routerLink="/creators/{{comicCreator.id}}">
+                        <img mat-card-xl-image src="{{comicCreator.thumbnail.path}}.{{comicCreator.thumbnail.extension}}" alt="{{comicCreator.name}}"/>
+                        <h3 style="font-size: larger;"><b>{{comicCreator.fullName}}</b></h3>
+                    </a>
+                </mat-card>
+            </div>
+        </div>
+    </ng-container>
+
+</div>
+
+
+

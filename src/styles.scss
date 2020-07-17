@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+img.mat-card-image{
+    min-height: 374px;
+    max-height: 374px;
+}
+
+img.detailImg{
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 0px 6%;
+}
+
+a{
+    color: #333;
+}
+
+div.pinterest{
+    display: flex;
+flex-flow: column wrap; /* Shorthand – you could use ‘flex-direction: column’ and ‘flex-wrap: wrap’ instead */
+justify-content: flex-start;
+  align-items: flex-start;
+}

@@ -1,0 +1,27 @@
+<div fxFlex fxLayout="column" style="margin: 15px;">
+    <app-search (search)="handleSearch($event)"></app-search>
+    <br>
+
+    <div fxLayout="row wrap">
+        <div fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
+        *ngFor="let comic of allComics | async | search:filter_value" gdAuto="row dense" gdAlignColumns="stretch" style="padding: 5px">
+            <mat-card matRipple [matRippleCentered]="true" [matRippleRadius]="550" [matRippleAnimation]="{enterDuration: 1000, exitDuration: 800}">
+                <a routerLink="/comics/{{comic.id}}">
+                    <img mat-card-image src="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}" alt="{{comic.name}}">
+                </a>
+                <mat-card-title>
+                    {{comic.title}}
+                </mat-card-title>
+                <p><i>{{comic.description}}</i></p>
+                <p><b>Price: </b>{{comic.prices[0].price}}$</p>
+                <ng-container *ngIf="comic.creators.items[0]">
+                    <p><b>Creator: </b>{{comic.creators.items[0].name}}</p>
+                </ng-container>
+                <ng-container *ngIf="comic.characters.items[0]">
+                    <b>Charaters:</b>
+                    <p style="display: inline; box-sizing: border-box;" *ngFor="let character of comic.characters.items">{{character.name}}, </p>
+                </ng-container>
+            </mat-card>
+        </div>
+    </div>
+</div>

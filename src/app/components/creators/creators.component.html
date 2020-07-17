@@ -1,0 +1,19 @@
+<div fxFlex fxLayout="column" style="margin: 15px;">
+    <app-search (search)="handleSearch($event)"></app-search>
+    <br>
+    <div fxLayout="row wrap">
+        <div fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
+        *ngFor="let creator of allCreators | async | searchCreators:filter_value" style="padding: 5px">
+            <mat-card matRipple [matRippleCentered]="true" [matRippleRadius]="550" [matRippleAnimation]="{enterDuration: 1000, exitDuration: 800}">
+                <a routerLink="/creators/{{creator.id}}">
+                    <img mat-card-image src="{{creator.thumbnail.path}}.{{creator.thumbnail.extension}}" alt="{{creator.name}}">
+                </a>
+                <mat-card-title>
+                    {{creator.firstName}}
+                </mat-card-title>
+                <mat-card-subtitle>Comics in which he works <b>{{creator.comics.available}}</b></mat-card-subtitle>
+                <mat-card-subtitle>Series in which he works <b>{{creator.series.available}}</b></mat-card-subtitle>
+            </mat-card>
+        </div>
+    </div>
+</div>

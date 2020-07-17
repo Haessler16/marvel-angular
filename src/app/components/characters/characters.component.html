@@ -1,0 +1,30 @@
+<div fxFlex fxLayout="column" style="margin: 15px;">
+
+    <app-search (search)="handleSearch($event)"></app-search>
+    <br>
+
+    <div fxLayout="row wrap">
+        <div fxFlex="25" gdAuto="row dense" gdAlignColumns="stretch" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
+        *ngFor="let character of allCharacters | async | search:filter_value" style="padding: 5px">
+
+        <ng-container *ngIf="character; else notFound">
+            <mat-card matRipple [matRippleCentered]="true" [matRippleColor]="'rgba(255, 28, 28, 0.253)'" [matRippleRadius]="550" [matRippleAnimation]="{enterDuration: 1000, exitDuration: 800}">
+                <a routerLink="/character/{{character.id}}">
+                    <img mat-card-image src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}" alt="{{character.name}}">
+                </a>
+                <mat-card-title>
+                    {{character.name}}
+                </mat-card-title>
+                <mat-card-subtitle>
+                    <h3>Comics in which it appears: <b>{{character.comics.available}}</b></h3>
+                </mat-card-subtitle>
+                <mat-card-subtitle>
+                    <h3>Series in which it appears: <b>{{character.series.available}}</b></h3>
+                </mat-card-subtitle>
+            </mat-card>
+        </ng-container>
+
+        <ng-template #notFound>Sorry Not Found, Try Later</ng-template>
+        </div>
+    </div>
+</div>

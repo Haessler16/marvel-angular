@@ -1,0 +1,79 @@
+<div fxFlex fxLayout="column" style="margin: 15px;">
+
+    <div fxLayout="row wrap">
+        <div fxFlex="100" fxLayout="column" style="padding: 5px">
+            <mat-card matRipple [matRippleCentered]="true" 
+            [matRippleRadius]="1150" [matRippleAnimation]="{enterDuration: 800, exitDuration: 500}">
+                <a href="{{getOnlyOne.urls[0].url}}" target="_blank">
+                    <img class="detailImg" src="{{getOnlyOne.thumbnail.path}}.{{getOnlyOne.thumbnail.extension}}" alt="{{getOnlyOne.name}}">
+                </a>
+                <br><br>
+                <h2>FirstName: {{getOnlyOne.firstName}}</h2>
+                <ng-container *ngIf="getOnlyOne.lastName">
+                    <h2>LastName: {{getOnlyOne.lastName}}</h2>
+                </ng-container>
+                <h1>FullName: <u>{{getOnlyOne.fullName}}</u></h1>
+            </mat-card>
+        </div>
+    </div>
+    
+    <br>
+        <mat-divider></mat-divider>
+        <h2 fxFlex="row wrap">
+            <mat-card-title><u>Comics in which he has participated:</u></mat-card-title>
+        </h2>
+        <div fxLayout="row wrap">
+            <div *ngFor="let creatorComic of getCreatorComic" gdAuto="row dense" gdAlignColumns="stretch" fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column" style="padding: 5px;">
+                <mat-card matRipple [matRippleCentered]="true" [matRippleColor]="'rgba(255, 28, 28, 0.153)'" 
+                [matRippleRadius]="350" [matRippleAnimation]="{enterDuration: 800, exitDuration: 500}">
+                    <a routerLink="/comics/{{creatorComic.id}}" >
+                        <img mat-card-image src="{{creatorComic.thumbnail.path}}.{{creatorComic.thumbnail.extension}}" alt="{{creatorComic.name}}">
+                    </a>
+                    <h2>{{creatorComic.title}}</h2>
+                    <ng-container *ngIf="creatorComic.creators.items">
+                        <ng-container *ngFor="let creator of creatorComic.creators.items">
+                            <ng-container *ngIf="creator.name === getOnlyOne.fullName">
+                                <mat-card-subtitle>Role: <b>{{creator.role}}</b></mat-card-subtitle>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                    <mat-card-subtitle>Price: <b>{{creatorComic.prices[0].price}}$</b></mat-card-subtitle>
+                </mat-card>
+            </div>
+        </div>
+    
+        <br>
+        <mat-divider></mat-divider>
+        <h1 fxFlex="row wrap">
+            <mat-card-title><u>Series in which he has participated:</u></mat-card-title>
+        </h1>
+        <div fxLayout="row wrap">
+            <div *ngFor="let creatorSeries of getCreatorSeries" gdAuto="row dense" gdAlignColumns="stretch" fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column" style="padding: 5px">
+                <mat-card matRipple [matRippleCentered]="true" [matRippleColor]="'rgba(255, 28, 28, 0.153)'" 
+                [matRippleRadius]="350" [matRippleAnimation]="{enterDuration: 800, exitDuration: 500}">
+                    <!-- <a routerLink="/series/{{creatorSeries.id}}"> -->
+                    <a href="{{creatorSeries.urls[0].url}}" target="_blank">
+                        <img mat-card-image src="{{creatorSeries.thumbnail.path}}.{{creatorSeries.thumbnail.extension}}" alt="{{creatorSeries.name}}">
+                    </a>
+                    <h2>{{creatorSeries.title}}</h2>
+                    <ng-container *ngIf="creatorSeries.rating">
+                        <h3>Rating: {{creatorSeries.rating}}</h3>
+                    </ng-container>
+                    <mat-card-subtitle>Start Year: {{creatorSeries.startYear}}</mat-card-subtitle>
+                    <mat-card-subtitle>End Year: {{creatorSeries.endYear}}</mat-card-subtitle>
+                    <ng-container *ngIf="creatorSeries.type">
+                        <p>Type: <b><i>{{creatorSeries.type}}</i></b></p>
+                    </ng-container>
+                    <ng-container *ngIf="creatorSeries.creators.items">
+                        <ng-container *ngFor="let creator of creatorSeries.creators.items">
+                            <ng-container *ngIf="creator.name === getOnlyOne.fullName">
+                                <mat-card-subtitle>Role: <b><u><i>{{creator.role}}</i></u></b></mat-card-subtitle>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </mat-card>   
+            </div>
+        </div>
+
+</div>
+

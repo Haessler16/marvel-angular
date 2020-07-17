@@ -1,0 +1,46 @@
+<div fxFlex fxLayout="column" style="margin: 15px;">
+
+    <app-search (search)="handleSearch($event)"></app-search>
+    <br>
+
+    <div fxLayout="row wrap">
+        <div gdAuto="row dense"  gdAlignColumns="stretch"  fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
+        *ngFor="let serie of allSeries | async | search:filter_value" style="padding: 5px">
+            <mat-card matRipple [matRippleCentered]="true" [matRippleRadius]="550" [matRippleAnimation]="{enterDuration: 1000, exitDuration: 800}">
+                <a href="{{serie.urls[0].url}}" target="_blank">
+                    <img mat-card-image src="{{serie.thumbnail.path}}.{{serie.thumbnail.extension}}" alt="{{serie.name}}">
+                </a>
+                <mat-card-title>
+                    {{serie.title}}
+                </mat-card-title>
+                <ng-container *ngIf="serie.description">
+                    <p><i>{{serie.description}}</i></p>
+                </ng-container>
+                <ng-container *ngIf="!serie.description">
+                    <br>
+                </ng-container>
+                <ng-container *ngIf="serie.rating">
+                    <h3>Rating: <u>{{serie.rating}}</u></h3>
+                </ng-container>
+                <ng-container *ngIf="!serie.description && !serie.rating">
+                    <br>
+                </ng-container>
+                
+                <mat-card-subtitle>Start Year: <b>{{serie.startYear}}</b></mat-card-subtitle>
+                <mat-card-subtitle>End Year: <b>{{serie.endYear}}</b></mat-card-subtitle>
+
+                <ng-container *ngIf="serie.creators.items">
+                    <ng-container *ngFor="let creator of serie.creators.items">
+                        <ng-container *ngIf="creator.role === 'writer'">
+                            <mat-card-subtitle>{{creator.name}}: <b><u>{{creator.role}}</u></b></mat-card-subtitle>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+
+                <ng-container *ngIf="serie.type">
+                    <mat-card-subtitle>Type: <b><u>{{serie.type}}</u></b></mat-card-subtitle>
+                </ng-container>
+            </mat-card>
+        </div>
+    </div>
+</div>

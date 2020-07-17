@@ -1,0 +1,70 @@
+<div fxFlex fxLayout="column" style="margin: 15px">
+
+    <div fxLayout="row wrap">
+        <div fxFlex="100" fxLayout="column" style="padding: 5px">
+            <mat-card matRipple [matRippleCentered]="true" [matRippleRadius]="1150" [matRippleAnimation]="{enterDuration: 800, exitDuration: 500}">
+                <a href="{{getOnlyOne.urls[0].url}}" target="_blank"> 
+                    <img class="detailImg" src="{{getOnlyOne.thumbnail.path}}.{{getOnlyOne.thumbnail.extension}}" alt="{{getOnlyOne.name}}">
+                </a>
+                <br><br>
+                <mat-card-title>{{getOnlyOne.name}}</mat-card-title>
+                <h2>{{getOnlyOne.description}}</h2>
+                <p>Comics in which it appears: <b>{{getOnlyOne.comics.available}}</b></p>
+                <p>Series in which it appears: <b>{{getOnlyOne.series.available}}</b></p>
+            </mat-card>
+        </div>
+    </div>
+    
+    <br>
+    <mat-divider></mat-divider>
+    <h1 fxFlex="row wrap">
+        <mat-card-title>Comics in that Character Appears:</mat-card-title>
+    </h1>
+    <div fxLayout="row wrap">
+        <br><br>
+        <div *ngFor="let charComics of getCharComics" gdAuto="row dense" gdAlignColumns="stretch" fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column" style="padding: 5px">
+            <mat-card matRipple [matRippleCentered]="true" [matRippleColor]="'rgba(255, 28, 28, 0.153)'" 
+            [matRippleRadius]="350" [matRippleAnimation]="{enterDuration: 800, exitDuration: 500}">
+                <a routerLink="/comics/{{charComics.id}}">
+                    <img mat-card-image src="{{charComics.thumbnail.path}}.{{charComics.thumbnail.extension}}" alt="{{charComics.name}}">
+                </a>
+                <h2>{{charComics.title}}</h2>
+
+                <ng-container *ngIf="charComics.creators.items as creator">
+                    <app-creator-role [data]="creator"></app-creator-role>
+                </ng-container>
+
+                <p>Price: {{charComics.prices[0].price}}$</p>
+            </mat-card>
+        </div>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <h1 fxFlex="row wrap">
+        <mat-card-title>Series:</mat-card-title>
+    </h1>
+        <div fxLayout="row wrap">
+        <br><br>
+        <div *ngFor="let charSerie of getCharSeries" gdAuto="row dense" gdAlignColumns="stretch" fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column" style="padding: 5px">
+            <mat-card matRipple [matRippleCentered]="true" [matRippleColor]="'rgba(255, 28, 28, 0.153)'" 
+            [matRippleRadius]="350" [matRippleAnimation]="{enterDuration: 800, exitDuration: 500}">
+                <a href="{{charSerie.urls[0].url}}" target="_blank">
+                    <img mat-card-image src="{{charSerie.thumbnail.path}}.{{charSerie.thumbnail.extension}}" alt="{{charSerie.name}}">
+                </a>
+                <h2>{{charSerie.title}}</h2>
+                <ng-container *ngIf="charSerie.rating">
+                    <h3>Rating: {{charSerie.rating}}</h3>
+                </ng-container>
+                <p>Start Year: {{charSerie.startYear}}</p>
+                <p>End Year: {{charSerie.endYear}}</p>
+                <ng-container *ngIf="charSerie.type">
+                    <p>Type: {{charSerie.type}}</p>
+                </ng-container>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+
+
+
