@@ -22,6 +22,7 @@ export class ComicsComponent implements OnInit {
   }
 
   handleSearch(e: string){
+    console.log(e)
     this.filter_value = e
   }
 

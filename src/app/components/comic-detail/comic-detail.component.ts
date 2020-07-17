@@ -34,7 +34,6 @@ export class ComicDetailComponent implements OnInit {
   getOne() {
     this.comicsDetail.getAll(this.Id)
       .subscribe((res: any) => {
-        console.log("One: ",res.data.results[0])
         this.getOnlyOne = res.data.results[0]
       })
   }
@@ -42,7 +41,6 @@ export class ComicDetailComponent implements OnInit {
   getCharacters(){
     this.comicsDetail.getComicCharacters(this.Id)
     .subscribe((res)=>{
-      console.log("Character: ",res.data.results)
       this.getComicCharacters = res.data.results
     })
   }
@@ -50,7 +48,6 @@ export class ComicDetailComponent implements OnInit {
   getCreators(){
     this.comicsDetail.getComicCreators(this.Id)
     .subscribe((res)=>{
-      console.log("Creators: ", res.data.results)
       this.getComicCreators = res.data.results
     })
   }
@@ -58,7 +55,6 @@ export class ComicDetailComponent implements OnInit {
   getStories(){
     this.comicsDetail.getComicStories(this.Id)
     .subscribe((res)=>{
-      console.log("Stories: ", res.data.results)
       this.getComicStories = res.data.results
     })
   }

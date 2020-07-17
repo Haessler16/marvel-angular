@@ -10,8 +10,9 @@ export class LoaderComponent implements OnInit {
 
   show = false
   constructor(private _router: Router) { }
-
+  
   ngOnInit(): void {
+
     this._router.events.subscribe(event=>{
       if(event instanceof NavigationStart){
         this.show = true
@@ -20,7 +21,6 @@ export class LoaderComponent implements OnInit {
       }
     })
 
-    console.log(this.show)
   }
 
 

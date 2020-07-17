@@ -34,7 +34,6 @@ export class CharacterDetailComponent implements OnInit {
   getOne() {
     this.characterDetail.getAll(this.Id)
       .subscribe((res: any) => {
-        console.log("One: ",res.data.results[0])
         this.getOnlyOne = res.data.results[0]
       })
   }
@@ -42,7 +41,6 @@ export class CharacterDetailComponent implements OnInit {
   getComics(){
     this.characterDetail.getCharacterComics(this.Id)
     .subscribe((res)=>{
-      console.log("Comics: ",res.data.results)
       this.getCharComics = res.data.results
     })
   }
@@ -50,7 +48,6 @@ export class CharacterDetailComponent implements OnInit {
   getSeries(){
     this.characterDetail.getCharacterSeries(this.Id)
     .subscribe((res)=>{
-      console.log("Series: ", res.data.results)
       this.getCharSeries = res.data.results
     })
   }

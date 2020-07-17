@@ -16,7 +16,6 @@ export class ComicsService {
   getAllComics():Observable<any>{
     return this._http.get<any>(this.URL_API)
     .pipe(map((data:any)=>{
-      console.log(data.data.results)
       return data.data.results
     }))
   }

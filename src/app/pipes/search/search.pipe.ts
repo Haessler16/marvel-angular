@@ -7,10 +7,10 @@ export class SearchPipe implements PipeTransform {
 
   transform(lista: any[], texto: string): any[] {
     if (!texto) return lista
-
-    return lista.filter(product => product.name
-      ? (product.name.toUpperCase().includes(texto.toUpperCase()))
-      : (product.title.toUpperCase().includes(texto.toUpperCase()))
+    return lista.filter(product => {
+        const result = product.name ? product.name : product.title
+        return result.toUpperCase().includes(texto.toUpperCase())
+      }
     )
   }
 

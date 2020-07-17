@@ -30,7 +30,6 @@ export class CreatorDetailComponent implements OnInit {
   getOne() {
     this.creatorDetail.getAll(this.Id)
       .subscribe((res: any) => {
-        console.log("One: ",res.data.results[0])
         this.getOnlyOne = res.data.results[0]
       })
   }
@@ -38,7 +37,6 @@ export class CreatorDetailComponent implements OnInit {
   getCharacters(){
     this.creatorDetail.getCreatorComics(this.Id)
     .subscribe((res)=>{
-      console.log("Comics: ",res.data.results)
       this.getCreatorComic = res.data.results
     })
   }
@@ -46,7 +44,6 @@ export class CreatorDetailComponent implements OnInit {
   getSeries(){
     this.creatorDetail.getCreatorSeries(this.Id)
     .subscribe((res)=>{
-      console.log("Series: ",res.data.results)
       this.getCreatorSeries = res.data.results
     })
   }

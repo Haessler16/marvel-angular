@@ -4,8 +4,13 @@
 
     <div fxLayout="row wrap">
         <div fxFlex="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
-        *ngFor="let comic of allComics | async | search:filter_value" gdAuto="row dense" gdAlignColumns="stretch" style="padding: 5px">
-            <mat-card matRipple [matRippleCentered]="true" [matRippleRadius]="550" [matRippleAnimation]="{enterDuration: 1000, exitDuration: 800}">
+        *ngFor="let comic of allComics | async | search:filter_value" 
+        gdAuto="row dense" gdAlignColumns="stretch" style="padding: 5px">
+        <ng-container *ngIf="comic; else bum">
+            <mat-card matRipple 
+            [matRippleCentered]="true" [matRippleRadius]="550" 
+            [matRippleAnimation]="{enterDuration: 1000, exitDuration: 800}">
+            
                 <a routerLink="/comics/{{comic.id}}">
                     <img mat-card-image src="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}" alt="{{comic.name}}">
                 </a>
@@ -22,6 +27,11 @@
                     <p style="display: inline; box-sizing: border-box;" *ngFor="let character of comic.characters.items">{{character.name}}, </p>
                 </ng-container>
             </mat-card>
+        </ng-container>
+        <ng-template #bum>
+            Not Found
+        </ng-template>
         </div>
     </div>
+    
 </div>
